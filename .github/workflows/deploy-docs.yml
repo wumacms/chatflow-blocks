@@ -1,0 +1,79 @@
+name: Deploy docs to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'packages/blocks/src/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/deploy-docs.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      # 前置检查：Pages 未启用时给出可读提示，而不是在 deploy 阶段才失败
+      - name: Check Pages enabled
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages")
+          if [ "$code" != "200" ]; then
+            echo "::error::GitHub Pages 尚未启用（HTTP $code）。请在 Settings → Pages → Source 选择 GitHub Actions 后重跑。"
+            exit 1
+          fi
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 12
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # 文档在 /<repo>/ 子路径下；配置了自定义域名时改用根路径。
+      # DOCS_BASE 由 docs/.vitepress/config.mts 读取为 VitePress 的 base。
+      - name: Build docs
+        run: pnpm --filter @chatflow/blocks-docs build
+        env:
+          DOCS_BASE: ${{ vars.CUSTOM_DOMAIN != '' && '/' || format('/{0}/', github.event.repository.name) }}
+
+      # VitePress 自带 404.html，无需再复制 index.html 兜底
+      - run: touch docs/.vitepress/dist/.nojekyll
+
+      - name: Custom domain (optional)
+        if: vars.CUSTOM_DOMAIN != ''
+        run: echo "${{ vars.CUSTOM_DOMAIN }}" > docs/.vitepress/dist/CNAME
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/.vitepress/dist
+          include-hidden-files: true   # 必须，否则 .nojekyll 会被排除
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

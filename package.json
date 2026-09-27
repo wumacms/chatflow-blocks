@@ -1,0 +1,29 @@
+{
+  "name": "chatflow-blocks-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @chatflow/blocks dev",
+    "build": "pnpm --filter @chatflow/blocks build",
+    "docs:dev": "pnpm --filter @chatflow/blocks-docs dev",
+    "docs:build": "pnpm --filter @chatflow/blocks-docs build",
+    "docs:gen": "node scripts/gen-component-docs.mjs",
+    "test": "pnpm --filter @chatflow/blocks test",
+    "lint": "eslint . --ext .vue,.ts,.tsx",
+    "format": "prettier --write \"**/*.{vue,ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.21.0",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  }
+}

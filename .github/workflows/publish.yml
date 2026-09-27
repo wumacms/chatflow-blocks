@@ -1,0 +1,57 @@
+name: Publish to npm
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+concurrency:
+  group: publish-npm
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write   # npm provenance 需要
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 12
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      # 版本号校验：tag 必须与 packages/blocks/package.json 的 version 一致
+      - name: 校验 tag 与包版本号一致
+        run: |
+          pkg=$(node -p "require('./packages/blocks/package.json').version")
+          tag="${GITHUB_REF_NAME#v}"
+          echo "package.json=$pkg  tag=$tag"
+          if [ "$pkg" != "$tag" ]; then
+            echo "::error::tag($tag) 与 package.json version($pkg) 不一致，请先执行 npm version"
+            exit 1
+          fi
+
+      - run: pnpm --filter @chatflow/blocks typecheck
+      - run: pnpm --filter @chatflow/blocks test
+      - run: pnpm --filter @chatflow/blocks build
+
+      # 先本地验证将要发布的内容
+      - name: 预演打包内容
+        run: pnpm --filter @chatflow/blocks pack --pack-destination /tmp
+
+      - name: 发布
+        run: pnpm --filter @chatflow/blocks publish --access public --provenance --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: 'true'

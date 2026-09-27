@@ -1,0 +1,17 @@
+node_modules
+dist
+*.log
+.DS_Store
+.vite
+coverage
+*.tsbuildinfo
+
+# 自动生成的类型声明（unplugin-vue-components）
+components.d.ts
+
+# VitePress
+docs/.vitepress/cache
+docs/.vitepress/dist
+
+# Vite 临时文件
+*.timestamp-*.mjs

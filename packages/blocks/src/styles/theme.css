@@ -1,0 +1,19 @@
+@theme {
+  /* 品牌色 */
+  --cf-primary: #4f46e5;
+  --cf-primary-hover: #4338ca;
+  --cf-primary-light: #eef2ff;
+
+  /* 圆角 */
+  --cf-radius: 1rem;
+  --cf-radius-sm: 0.5rem;
+  --cf-radius-lg: 1.5rem;
+
+  /* 阴影 */
+  --cf-shadow: 0 10px 40px -10px rgb(0 0 0 / 0.1);
+}
+
+/* 深色模式下的品牌色微调 */
+.dark {
+  --cf-primary-light: #1e1b4b;
+}

@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 自定义品牌色（可选） */
+:root {
+  --cf-primary: #4f46e5;
+}
