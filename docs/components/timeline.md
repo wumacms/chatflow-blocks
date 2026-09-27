@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { TimelineData } from '@chatflow/blocks'
+import type { TimelineData } from '@zeldafox/blocks'
 
 const timeline: TimelineData = {
   title: '发展历程',

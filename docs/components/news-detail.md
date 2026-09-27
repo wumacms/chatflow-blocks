@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { NewsDetailData } from '@chatflow/blocks'
+import type { NewsDetailData } from '@zeldafox/blocks'
 
 const newsDetail: NewsDetailData = {
   category: '产品更新',

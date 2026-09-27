@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { BreadcrumbData } from '@chatflow/blocks'
+import type { BreadcrumbData } from '@zeldafox/blocks'
 
 const breadcrumb: BreadcrumbData = {
   items: [

@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { StepsData } from '@chatflow/blocks'
+import type { StepsData } from '@zeldafox/blocks'
 
 const steps: StepsData = {
   title: '三步开启高效协作',

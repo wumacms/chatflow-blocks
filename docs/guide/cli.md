@@ -1,15 +1,15 @@
 # CLI 初始化
 
-`@chatflow/blocks` 提供一条命令完成接入，无需手动改配置。
+`@zeldafox/blocks` 提供一条命令完成接入，无需手动改配置。
 
 ```bash
-npx @chatflow/blocks init
+npx @zeldafox/blocks init
 ```
 
 也可通过 pnpm / npm 调用：
 
 ```bash
-pnpm dlx @chatflow/blocks init
+pnpm dlx @zeldafox/blocks init
 ```
 
 ## 它会做什么
@@ -18,7 +18,7 @@ pnpm dlx @chatflow/blocks init
 
 1. **检测项目类型** —— 查找 `vite.config.ts|js` 或 `nuxt.config.ts|js`
 2. **改写 Vite 配置** —— 插入 `Components` 插件与 `ChatflowBlocksResolver`
-3. **引入样式** —— 在 `src/main.ts|js` 顶部加入 `import '@chatflow/blocks/style.css'`
+3. **引入样式** —— 在 `src/main.ts|js` 顶部加入 `import '@zeldafox/blocks/style.css'`
 
 执行前后的 `vite.config.ts` 对比：
 
@@ -26,7 +26,7 @@ pnpm dlx @chatflow/blocks init
   import { defineConfig } from 'vite'
   import vue from '@vitejs/plugin-vue'
 + import Components from 'unplugin-vue-components/vite'
-+ import { ChatflowBlocksResolver } from '@chatflow/blocks/resolver'
++ import { ChatflowBlocksResolver } from '@zeldafox/blocks/resolver'
 
   export default defineConfig({
 -   plugins: [vue()],
@@ -40,7 +40,7 @@ pnpm dlx @chatflow/blocks init
 `src/main.ts`：
 
 ```diff
-+ import '@chatflow/blocks/style.css'
++ import '@zeldafox/blocks/style.css'
   import { createApp } from 'vue'
   import App from './App.vue'
 ```
@@ -66,7 +66,7 @@ CLI 会对 `vite.config.ts` 与 `src/main.ts` 做**字符串插入**，建议先
 | 目录中没有配置文件         | 报 `未检测到 Vite 或 Nuxt 项目` 并以 code 1 退出 | 在项目根目录执行                        |
 | Nuxt 项目                  | 提示「Nuxt 模块暂未内置」并以 code 0 退出        | 参见[自动导入](./auto-import)手动配置   |
 | 配置里没有 `plugins:` 字段 | 提示手动添加 `Components` 插件                   | 按自动导入页面补上 plugins              |
-| 找不到 `src/main.ts`       | 提示手动引入样式                                 | 在入口手动加 `import '@chatflow/blocks/style.css'` |
+| 找不到 `src/main.ts`       | 提示手动引入样式                                 | 在入口手动加 `import '@zeldafox/blocks/style.css'` |
 
 ::: tip
 Nuxt 用户可把 `Components({ resolvers: [ChatflowBlocksResolver()] })` 配到 `nuxt.config.ts` 的 `vite.plugins` 中。

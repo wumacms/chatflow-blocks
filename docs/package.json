@@ -1,5 +1,5 @@
 {
-  "name": "@chatflow/blocks-docs",
+  "name": "@zeldafox/blocks-docs",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vitepress preview ."
   },
   "dependencies": {
-    "@chatflow/blocks": "workspace:*",
+    "@zeldafox/blocks": "workspace:*",
     "vue": "^3.4.0"
   },
   "devDependencies": {

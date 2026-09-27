@@ -18,12 +18,12 @@ describe('ChatflowBlocksResolver', () => {
     const result = resolve('Hero')
     expect(result).toBeDefined()
     expect(result!.name).toBe('Hero')
-    expect(result!.from).toBe('@chatflow/blocks')
+    expect(result!.from).toBe('@zeldafox/blocks')
   })
 
   it('默认附带样式副作用', () => {
     expect(resolve('Features')!.sideEffects).toEqual([
-      '@chatflow/blocks/style.css',
+      '@zeldafox/blocks/style.css',
     ])
   })
 

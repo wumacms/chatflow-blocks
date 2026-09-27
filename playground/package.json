@@ -7,7 +7,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@chatflow/blocks": "workspace:*",
+    "@zeldafox/blocks": "workspace:*",
     "vue": "^3.4.0"
   },
   "devDependencies": {

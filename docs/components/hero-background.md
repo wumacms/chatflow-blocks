@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { HeroBackgroundData } from '@chatflow/blocks'
+import type { HeroBackgroundData } from '@zeldafox/blocks'
 
 const heroBg: HeroBackgroundData = {
   title: '企业级即时通讯<br>让协作更快一步',

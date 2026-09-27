@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { HeroData } from '@chatflow/blocks'
+import type { HeroData } from '@zeldafox/blocks'
 
 const hero: HeroData = {
   title: '企业级即时通讯<br>让协作更快一步',

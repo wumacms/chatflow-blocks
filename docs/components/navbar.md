@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { NavbarData } from '@chatflow/blocks'
+import type { NavbarData } from '@zeldafox/blocks'
 
 const navbar: NavbarData = {
   brand: 'ChatFlow',

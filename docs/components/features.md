@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { FeaturesData } from '@chatflow/blocks'
+import type { FeaturesData } from '@zeldafox/blocks'
 
 const features: FeaturesData = {
   title: '专为商务打造的特性',

@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { BannerData } from '@chatflow/blocks'
+import type { BannerData } from '@zeldafox/blocks'
 
 const banner: BannerData = {
   text: '🎉 新产品上线：AI 助手现已支持智能摘要',

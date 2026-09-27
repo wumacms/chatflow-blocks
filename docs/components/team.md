@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { TeamData } from '@chatflow/blocks'
+import type { TeamData } from '@zeldafox/blocks'
 
 const team: TeamData = {
   title: '核心团队',

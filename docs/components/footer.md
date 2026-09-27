@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { FooterData } from '@chatflow/blocks'
+import type { FooterData } from '@zeldafox/blocks'
 
 const footer: FooterData = {
   brand: 'ChatFlow',

@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { FAQData } from '@chatflow/blocks'
+import type { FAQData } from '@zeldafox/blocks'
 
 const faq: FAQData = {
   title: '常见问题',

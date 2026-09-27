@@ -1,4 +1,4 @@
-# @chatflow/blocks
+# @zeldafox/blocks
 
 > 企业落地页区块组件库 · Vue 3 + TailwindCSS 4 + TypeScript
 

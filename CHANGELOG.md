@@ -10,7 +10,7 @@
 - **类型系统**：每个组件对应一个 `XxxData` 接口，全部继承 `BlockBase`，统一生成单一 `dist/index.d.ts`
 - **双主题**：基于 TailwindCSS 4 的 `dark:` 前缀 + class 策略，提供 `useTheme` composable
 - **自动导入**：`ChatflowBlocksResolver`（`unplugin-vue-components` 解析器），支持前缀与样式按需引入
-- **CLI 工具**：`npx @chatflow/blocks init` 自动写入 Vite 配置并引入样式，幂等可重复执行
+- **CLI 工具**：`npx @zeldafox/blocks init` 自动写入 Vite 配置并引入样式，幂等可重复执行
 - **预编译样式**：`dist/style.css`，用户无需配置 Tailwind
 - **Vue 插件**：`app.use(ChatflowBlocks)` 全量注册
 - **VitePress 文档**与 playground 演示环境

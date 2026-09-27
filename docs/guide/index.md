@@ -3,8 +3,8 @@
 ## 安装
 
 ```bash
-pnpm add @chatflow/blocks
-npx @chatflow/blocks init
+pnpm add @zeldafox/blocks
+npx @zeldafox/blocks init
 ```
 
 `init` 会自动检测项目类型（Vite / Nuxt / Vue CLI），写入 `vite.config.ts` 配置，并在入口文件引入样式。命令是幂等的，重复执行不会报错。详见 [CLI 初始化](./cli)。
@@ -13,7 +13,7 @@ npx @chatflow/blocks init
 
 ```vue
 <script setup lang="ts">
-import type { HeroData, FeaturesData } from '@chatflow/blocks'
+import type { HeroData, FeaturesData } from '@zeldafox/blocks'
 
 const hero: HeroData = {
   title: '让每个想法都发光',
@@ -56,7 +56,7 @@ const features: FeaturesData = {
 ```ts
 // vite.config.ts
 import Components from 'unplugin-vue-components/vite'
-import { ChatflowBlocksResolver } from '@chatflow/blocks/resolver'
+import { ChatflowBlocksResolver } from '@zeldafox/blocks/resolver'
 
 export default defineConfig({
   plugins: [
@@ -72,7 +72,7 @@ export default defineConfig({
 
 ```vue
 <script setup lang="ts">
-import { Hero } from '@chatflow/blocks'
+import { Hero } from '@zeldafox/blocks'
 </script>
 ```
 
@@ -80,8 +80,8 @@ import { Hero } from '@chatflow/blocks'
 
 ```ts
 import { createApp } from 'vue'
-import ChatflowBlocks from '@chatflow/blocks'
-import '@chatflow/blocks/style.css'
+import ChatflowBlocks from '@zeldafox/blocks'
+import '@zeldafox/blocks/style.css'
 
 createApp(App).use(ChatflowBlocks).mount('#app')
 ```

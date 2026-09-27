@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { PageHeaderData } from '@chatflow/blocks'
+import type { PageHeaderData } from '@zeldafox/blocks'
 
 const pageHeader: PageHeaderData = {
   title: '帮助文档',

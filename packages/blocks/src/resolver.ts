@@ -85,7 +85,7 @@ function isComponentName(name: string): name is ComponentName {
  *
  * @example
  * ```ts
- * import { ChatflowBlocksResolver } from '@chatflow/blocks/resolver'
+ * import { ChatflowBlocksResolver } from '@zeldafox/blocks/resolver'
  *
  * Components({
  *   resolvers: [ChatflowBlocksResolver()],
@@ -109,9 +109,9 @@ export function ChatflowBlocksResolver(
 
       return {
         name: componentName,
-        from: '@chatflow/blocks',
+        from: '@zeldafox/blocks',
         sideEffects: importStyle
-          ? ['@chatflow/blocks/style.css']
+          ? ['@zeldafox/blocks/style.css']
           : undefined,
       }
     },

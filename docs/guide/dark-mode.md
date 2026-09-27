@@ -12,7 +12,7 @@
 
 ```vue
 <script setup lang="ts">
-import { useTheme } from '@chatflow/blocks'
+import { useTheme } from '@zeldafox/blocks'
 
 const { isDark, toggleDark } = useTheme()
 </script>

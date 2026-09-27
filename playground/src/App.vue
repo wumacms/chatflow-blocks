@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTheme } from '@chatflow/blocks'
+import { useTheme } from '@zeldafox/blocks'
 import type {
   NavbarData,
   BannerData,
@@ -31,7 +31,7 @@ import type {
   PageHeaderData,
   BreadcrumbData,
   FooterData,
-} from '@chatflow/blocks'
+} from '@zeldafox/blocks'
 
 const { isDark, toggleDark } = useTheme()
 

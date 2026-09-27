@@ -42,16 +42,16 @@ jobs:
             exit 1
           fi
 
-      - run: pnpm --filter @chatflow/blocks typecheck
-      - run: pnpm --filter @chatflow/blocks test
-      - run: pnpm --filter @chatflow/blocks build
+      - run: pnpm --filter @zeldafox/blocks typecheck
+      - run: pnpm --filter @zeldafox/blocks test
+      - run: pnpm --filter @zeldafox/blocks build
 
       # 先本地验证将要发布的内容
       - name: 预演打包内容
-        run: pnpm --filter @chatflow/blocks pack --pack-destination /tmp
+        run: pnpm --filter @zeldafox/blocks pack --pack-destination /tmp
 
       - name: 发布
-        run: pnpm --filter @chatflow/blocks publish --access public --provenance --no-git-checks
+        run: pnpm --filter @zeldafox/blocks publish --access public --provenance --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'

@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { ComparisonTableData } from '@chatflow/blocks'
+import type { ComparisonTableData } from '@zeldafox/blocks'
 
 const comparisonTable: ComparisonTableData = {
   title: '为什么选择 ChatFlow',

@@ -51,7 +51,7 @@ jobs:
       # 文档在 /<repo>/ 子路径下；配置了自定义域名时改用根路径。
       # DOCS_BASE 由 docs/.vitepress/config.mts 读取为 VitePress 的 base。
       - name: Build docs
-        run: pnpm --filter @chatflow/blocks-docs build
+        run: pnpm --filter @zeldafox/blocks-docs build
         env:
           DOCS_BASE: ${{ vars.CUSTOM_DOMAIN != '' && '/' || format('/{0}/', github.event.repository.name) }}
 

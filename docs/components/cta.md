@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { CTAData } from '@chatflow/blocks'
+import type { CTAData } from '@zeldafox/blocks'
 
 const cta: CTAData = {
   title: '立即提升团队协作效率',

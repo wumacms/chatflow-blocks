@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { IconWallData } from '@chatflow/blocks'
+import type { IconWallData } from '@zeldafox/blocks'
 
 const iconWall: IconWallData = {
   title: '一个平台，覆盖全部场景',

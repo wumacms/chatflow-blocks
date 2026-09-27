@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { LogoBarData } from '@chatflow/blocks'
+import type { LogoBarData } from '@zeldafox/blocks'
 
 const logoBar: LogoBarData = {
   items: [

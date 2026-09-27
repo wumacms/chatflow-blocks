@@ -265,7 +265,7 @@ for (const name of componentDirs) {
     md.push('')
     md.push('```vue')
     md.push('<script setup lang="ts">')
-    md.push(`import type { ${meta.type} } from '@chatflow/blocks'`)
+    md.push(`import type { ${meta.type} } from '@zeldafox/blocks'`)
     md.push('')
     md.push(`const ${example.varName}: ${meta.type} = ${example.body}`)
     md.push('</script>')

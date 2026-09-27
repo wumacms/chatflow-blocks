@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { ServiceListData } from '@chatflow/blocks'
+import type { ServiceListData } from '@zeldafox/blocks'
 
 const serviceList: ServiceListData = {
   title: '我们的服务',

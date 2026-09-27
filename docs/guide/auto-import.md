@@ -1,6 +1,6 @@
 # 自动导入
 
-30 个组件逐个 `import` 很繁琐。`@chatflow/blocks` 内置 `ChatflowBlocksResolver`，配合 `unplugin-vue-components` 可按需引入——只打包你用到的组件，样式同步带入。
+30 个组件逐个 `import` 很繁琐。`@zeldafox/blocks` 内置 `ChatflowBlocksResolver`，配合 `unplugin-vue-components` 可按需引入——只打包你用到的组件，样式同步带入。
 
 ## 配置
 
@@ -17,7 +17,7 @@ pnpm add -D unplugin-vue-components
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import { ChatflowBlocksResolver } from '@chatflow/blocks/resolver'
+import { ChatflowBlocksResolver } from '@zeldafox/blocks/resolver'
 
 export default defineConfig({
   plugins: [
@@ -33,7 +33,7 @@ export default defineConfig({
 
 ```vue
 <script setup lang="ts">
-import type { HeroData } from '@chatflow/blocks'  // 类型仍需显式引入
+import type { HeroData } from '@zeldafox/blocks'  // 类型仍需显式引入
 
 const hero: HeroData = { title: '你好' }
 </script>
@@ -70,12 +70,12 @@ ChatflowBlocksResolver({
 
 ### importStyle
 
-- `true`（默认）：每个被引入的组件自动附带 `@chatflow/blocks/style.css`，无需手动引入
+- `true`（默认）：每个被引入的组件自动附带 `@zeldafox/blocks/style.css`，无需手动引入
 - `false`：关闭自动引入样式，适用于你已经全局引入过样式的情况
 
 ```ts
 // main.ts（importStyle: false 时的替代做法）
-import '@chatflow/blocks/style.css'
+import '@zeldafox/blocks/style.css'
 ```
 
 ## 匹配规则
@@ -101,7 +101,7 @@ Components({
 ```js
 // webpack.config.js
 const Components = require('unplugin-vue-components/webpack')
-const { ChatflowBlocksResolver } = require('@chatflow/blocks/resolver')
+const { ChatflowBlocksResolver } = require('@zeldafox/blocks/resolver')
 
 module.exports = {
   plugins: [
@@ -110,21 +110,21 @@ module.exports = {
 }
 ```
 
-> Nuxt 模块尚未内置，`npx @chatflow/blocks init` 检测到 Nuxt 项目会提示手动配置，按本页配置 Nuxt 的 `vite.plugins` 即可。
+> Nuxt 模块尚未内置，`npx @zeldafox/blocks init` 检测到 Nuxt 项目会提示手动配置，按本页配置 Nuxt 的 `vite.plugins` 即可。
 
 ## 其他接入方式
 
 | 方式         | 写法                                            | 适用场景              |
 | ------------ | ----------------------------------------------- | --------------------- |
 | 自动导入     | `ChatflowBlocksResolver()`                      | 推荐，按需打包        |
-| 手动引入     | `import { Hero } from '@chatflow/blocks'`       | 局部使用              |
+| 手动引入     | `import { Hero } from '@zeldafox/blocks'`       | 局部使用              |
 | 全量注册     | `app.use(ChatflowBlocks)`                       | Demo / 快速验证       |
 
 ```ts
 // 全量注册
 import { createApp } from 'vue'
-import ChatflowBlocks from '@chatflow/blocks'
-import '@chatflow/blocks/style.css'
+import ChatflowBlocks from '@zeldafox/blocks'
+import '@zeldafox/blocks/style.css'
 
 createApp(App).use(ChatflowBlocks).mount('#app')
 ```

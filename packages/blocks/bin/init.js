@@ -27,7 +27,7 @@ function findFirst(paths) {
 
 async function main() {
   const cwd = process.cwd()
-  log.info('初始化 @chatflow/blocks')
+  log.info('初始化 @zeldafox/blocks')
 
   // 1. 检测项目类型
   const isVite = existsSync(resolve(cwd, 'vite.config.ts')) || existsSync(resolve(cwd, 'vite.config.js'))
@@ -59,7 +59,7 @@ async function main() {
     if (!viteContent.includes('unplugin-vue-components')) {
       importLines.push(`import Components from 'unplugin-vue-components/vite'`)
     }
-    importLines.push(`import { ChatflowBlocksResolver } from '@chatflow/blocks/resolver'`)
+    importLines.push(`import { ChatflowBlocksResolver } from '@zeldafox/blocks/resolver'`)
 
     // 在第一个 import 之后插入
     const firstImportIndex = viteContent.search(/^import\s/m)
@@ -95,15 +95,15 @@ async function main() {
 
   if (mainPath) {
     let mainContent = readFileSync(mainPath, 'utf-8')
-    if (!mainContent.includes('@chatflow/blocks/style.css')) {
-      mainContent = `import '@chatflow/blocks/style.css'\n${mainContent}`
+    if (!mainContent.includes('@zeldafox/blocks/style.css')) {
+      mainContent = `import '@zeldafox/blocks/style.css'\n${mainContent}`
       writeFileSync(mainPath, mainContent)
       log.ok(`已在 ${mainPath.split('/').pop()} 引入样式`)
     } else {
       log.ok('main.ts 已引入样式，跳过')
     }
   } else {
-    log.warn('未找到 src/main.ts，请手动引入 "@chatflow/blocks/style.css"')
+    log.warn('未找到 src/main.ts，请手动引入 "@zeldafox/blocks/style.css"')
   }
 
   console.log('')
@@ -111,7 +111,7 @@ async function main() {
   console.log('')
   console.log(colors.gray('示例：'))
   console.log(colors.gray(`  <script setup lang="ts">`))
-  console.log(colors.gray(`  import type { HeroData } from '@chatflow/blocks'`))
+  console.log(colors.gray(`  import type { HeroData } from '@zeldafox/blocks'`))
   console.log(colors.gray(`  const hero: HeroData = { title: 'Hello', image: { src: '/hero.png' } }`))
   console.log(colors.gray(`  </script>`))
   console.log(colors.gray(`  <template>`))

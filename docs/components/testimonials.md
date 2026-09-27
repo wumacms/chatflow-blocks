@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { TestimonialsData } from '@chatflow/blocks'
+import type { TestimonialsData } from '@zeldafox/blocks'
 
 const testimonials: TestimonialsData = {
   title: '客户心声',

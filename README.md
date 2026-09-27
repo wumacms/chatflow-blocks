@@ -7,7 +7,7 @@
 
 | 特性           | 说明                                            |
 | -------------- | ----------------------------------------------- |
-| **零配置**     | `npx @chatflow/blocks init` 一条命令完成所有配置 |
+| **零配置**     | `npx @zeldafox/blocks init` 一条命令完成所有配置 |
 | **零 import**  | 提供 `unplugin-vue-components` 解析器，自动导入 |
 | **零前缀**     | 直接用 `<Hero>`，而不是 `<CfHero>`              |
 | **单一对象**   | 每个组件只有 `data` 一个 prop，天然 JSON 驱动   |
@@ -17,15 +17,15 @@
 ## 安装
 
 ```bash
-pnpm add @chatflow/blocks
-npx @chatflow/blocks init
+pnpm add @zeldafox/blocks
+npx @zeldafox/blocks init
 ```
 
 ## 使用
 
 ```vue
 <script setup lang="ts">
-import type { HeroData } from '@chatflow/blocks'
+import type { HeroData } from '@zeldafox/blocks'
 
 const hero: HeroData = {
   title: '让每个想法都发光',
@@ -59,7 +59,7 @@ const hero: HeroData = {
 
 ```
 chatflow-blocks/
-├── packages/blocks/     # 组件库主包 @chatflow/blocks
+├── packages/blocks/     # 组件库主包 @zeldafox/blocks
 │   ├── src/components/  # 30 个区块组件
 │   ├── src/composables/ # useTheme、useMergedData
 │   ├── src/utils/       # cn、normalize
@@ -97,14 +97,14 @@ pnpm docs:gen   # 从源码重新生成组件文档页
 ```bash
 git switch main && git pull
 pnpm install --frozen-lockfile
-pnpm --filter @chatflow/blocks test      # 确保通过
+pnpm --filter @zeldafox/blocks test      # 确保通过
 ```
 
 升版本并打 tag（`--no-git-tag-version` 只改 `version` 字段，tag 由我们显式创建，避免 pnpm/npm 生成的 tag 名不确定）：
 
 ```bash
 VERSION=$(node -p "require('./packages/blocks/package.json').version")
-# 或升版本：pnpm --filter @chatflow/blocks version patch --no-git-tag-version
+# 或升版本：pnpm --filter @zeldafox/blocks version patch --no-git-tag-version
 git add -A && git commit -m "chore: release v$VERSION"
 git tag "v$VERSION"
 git push && git push --tags              # 推送 tag 触发 .github/workflows/publish.yml
@@ -117,10 +117,10 @@ git push && git push --tags              # 推送 tag 触发 .github/workflows/p
 本地验证将要发布的文件清单：
 
 ```bash
-pnpm --filter @chatflow/blocks pack --pack-destination /tmp   # 产出 tgz，可解压检查
+pnpm --filter @zeldafox/blocks pack --pack-destination /tmp   # 产出 tgz，可解压检查
 ```
 
-> `@chatflow/blocks` 是 scope 包，`--access public` 必需，否则发布后只有自己可见。
+> `@zeldafox/blocks` 是 scope 包，`--access public` 必需，否则发布后只有自己可见。
 
 ### 文档发布到 GitHub Pages
 

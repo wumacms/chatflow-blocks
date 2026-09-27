@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { VideoData } from '@chatflow/blocks'
+import type { VideoData } from '@zeldafox/blocks'
 
 const video: VideoData = {
   title: '产品演示',

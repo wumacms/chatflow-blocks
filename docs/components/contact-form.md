@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { ContactFormData } from '@chatflow/blocks'
+import type { ContactFormData } from '@zeldafox/blocks'
 
 const contactForm: ContactFormData = {
   title: '联系我们',

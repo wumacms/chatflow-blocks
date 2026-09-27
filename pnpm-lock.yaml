@@ -32,7 +32,7 @@ importers:
 
   docs:
     dependencies:
-      '@chatflow/blocks':
+      '@zeldafox/blocks':
         specifier: workspace:*
         version: link:../packages/blocks
       vue:
@@ -82,7 +82,7 @@ importers:
 
   playground:
     dependencies:
-      '@chatflow/blocks':
+      '@zeldafox/blocks':
         specifier: workspace:*
         version: link:../packages/blocks
       vue:

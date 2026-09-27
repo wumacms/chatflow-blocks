@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { TopImageData } from '@chatflow/blocks'
+import type { TopImageData } from '@zeldafox/blocks'
 
 const topImage: TopImageData = {
   title: '全平台一致体验',

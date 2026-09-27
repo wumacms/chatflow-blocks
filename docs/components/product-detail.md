@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { ProductDetailData } from '@chatflow/blocks'
+import type { ProductDetailData } from '@zeldafox/blocks'
 
 const productDetail: ProductDetailData = {
   name: 'AI 智能助手',

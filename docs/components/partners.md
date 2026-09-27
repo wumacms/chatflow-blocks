@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { PartnersData } from '@chatflow/blocks'
+import type { PartnersData } from '@zeldafox/blocks'
 
 const partners: PartnersData = {
   title: '我们的合作伙伴',

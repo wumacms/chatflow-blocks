@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { ImageTextData } from '@chatflow/blocks'
+import type { ImageTextData } from '@zeldafox/blocks'
 
 const imageText: ImageTextData = {
   title: '无缝沟通，跨越部门',

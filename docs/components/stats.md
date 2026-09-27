@@ -8,7 +8,7 @@
 
 ```vue
 <script setup lang="ts">
-import type { StatsData } from '@chatflow/blocks'
+import type { StatsData } from '@zeldafox/blocks'
 
 const stats: StatsData = {
   theme: 'primary',

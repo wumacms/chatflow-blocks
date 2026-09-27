@@ -95,6 +95,6 @@
 
 - `vue-tsc --noEmit`：0 错误
 - `pnpm test`：37 个测试全通过
-- `pnpm --filter @chatflow/blocks build`：`index.js` gzip 15.4 kB、`style.css` gzip 6.8 kB、单一 `index.d.ts`
+- `pnpm --filter @zeldafox/blocks build`：`index.js` gzip 15.4 kB、`style.css` gzip 6.8 kB、单一 `index.d.ts`
 - `pnpm --filter chatflow-blocks-playground build`：通过（30 个组件全部渲染）
 - `pnpm lint`：0 error
