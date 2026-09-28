@@ -2,6 +2,14 @@
 
 本项目遵循 [Semantic Versioning](https://semver.org/)。
 
+## 1.0.1
+
+### 文档
+
+- 重写 `packages/blocks/README.md`：补齐安装、四种接入方式、30 个组件清单（含类型名与用途）、
+  数据契约、主题定制、深色模式、导出子路径与常见问题
+- 修正示例字段与源码不一致处（`NavbarData.brand` 为字符串，`BlockTag` 预设色为 10 种）
+
 ## 1.0.0
 
 ### 新增
