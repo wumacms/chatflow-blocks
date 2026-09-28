@@ -1,6 +1,6 @@
 {
   "name": "@zeldafox/blocks",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "企业落地页区块组件库 - Vue 3 + TailwindCSS 4 + TypeScript",
   "type": "module",
   "sideEffects": [
