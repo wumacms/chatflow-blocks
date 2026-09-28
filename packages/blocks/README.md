@@ -10,6 +10,7 @@
 | **零配置**    | `npx @zeldafox/blocks init` 一条命令写完 Vite 配置与样式引入 |
 | **零 import** | 内置 `unplugin-vue-components` 解析器，模板里直接用组件名    |
 | **单一对象**  | 每个组件只有 `data` 一个 prop，天然 JSON 驱动，可存库下发    |
+| **多风格**    | 数据结构不变，改 `variant`（结构）/ `tone`（皮肤）切换外观   |
 | **双主题**    | 30 个组件全部内置 `dark:` 适配，切换 `html.dark` 即生效      |
 | **强类型**    | 每个组件对应一个 `XxxData` 接口，单一 `index.d.ts` 全量导出  |
 | **按需打包**  | ESM + CJS 双产物，Tree-shaking 友好，样式已预编译            |
@@ -304,6 +305,34 @@ const navbar: NavbarData = {
 ```ts
 const hero: HeroData = { title: 'Hello', class: 'py-32' }
 ```
+
+### 区块风格（variant × tone）
+
+全局品牌变量之上还有一层**区块皮肤**：数据结构不变，只改一个字段即可切换整套外观。
+
+```ts
+const hero: HeroData = {
+  variant: 'centered', // 结构：centered / split / background
+  tone: 'classic', // 皮肤：classic / brutal / amber
+  title: '<mark>企业级即时通讯</mark><br>让协作更快一步',
+  actions: [{ text: '开始免费使用', link: '/signup' }],
+}
+
+const heroBrutal: HeroData = { ...hero, tone: 'brutal' } // 复用同一份数据
+```
+
+`variant` 决定 DOM 骨架，`tone` 只切换一组 `--cf-{组件}-*` 变量，两者正交。
+想自定义皮肤，覆盖对应变量即可，不需要改组件：
+
+```css
+[data-cf-tone='brutal'] {
+  --cf-hero-bg: #0b1120;
+  --cf-hero-btn-primary-bg: #f97316;
+  --cf-hero-btn-primary-shadow: 6px 6px 0 #0ea5e9;
+}
+```
+
+详见 [区块风格指南](https://github.com/wumacms/chatflow-blocks/blob/main/docs/guide/tones.md)。
 
 ## 深色模式
 

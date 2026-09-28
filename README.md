@@ -11,6 +11,7 @@
 | **零 import**  | 提供 `unplugin-vue-components` 解析器，自动导入 |
 | **零前缀**     | 直接用 `<Hero>`，而不是 `<CfHero>`              |
 | **单一对象**   | 每个组件只有 `data` 一个 prop，天然 JSON 驱动   |
+| **多风格**     | 数据结构不变，改一个 `tone` 字段切换整套外观    |
 | **双主题**     | 30 个组件全部自动适配浅色 / 深色模式            |
 | **强类型**     | 每个组件对应一个 `XxxData` 接口                 |
 
@@ -41,6 +42,29 @@ const hero: HeroData = {
   <Footer :data="footer" />
 </template>
 ```
+
+## 多风格
+
+同一份数据，只改 `tone` 字段就能换一整套外观，DOM 结构完全不变：
+
+```ts
+import type { HeroData } from '@zeldafox/blocks'
+
+const hero: HeroData = {
+  variant: 'centered', // 结构：centered / split / background
+  tone: 'classic', // 皮肤：classic / brutal / amber
+  title: '<mark>企业级即时通讯</mark><br>让协作更快一步',
+  description: '安全、高效、可定制。',
+  actions: [{ text: '开始免费使用', link: '/signup' }],
+}
+
+const heroBrutal: HeroData = { ...hero, tone: 'brutal' }
+```
+
+- `variant` 决定 DOM 骨架（结构差异），`tone` 只切换一组 `--cf-{组件}-*` CSS 变量（皮肤差异）。
+  两者正交：组合数是乘法，代码量是加法。
+- 视觉参数不进数据契约，所以 AI 生成的 JSON 与低代码属性面板始终干净。
+- 详见 [区块风格](docs/guide/tones.md)。
 
 ## 组件清单（30 个）
 

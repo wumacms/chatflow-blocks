@@ -32,6 +32,7 @@ export default defineConfig({
           text: '深入',
           items: [
             { text: '数据契约', link: '/guide/contracts' },
+            { text: '区块风格', link: '/guide/tones' },
             { text: '主题定制', link: '/guide/theming' },
             { text: '深色模式', link: '/guide/dark-mode' },
             { text: '无障碍', link: '/guide/accessibility' },

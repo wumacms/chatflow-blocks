@@ -67,18 +67,28 @@ const navbar: NavbarData = {
 }
 
 /* ============ Hero ============ */
+/* 同一份数据，只改 tone 字段即可切换外观 */
 const hero: HeroData = {
-  title: '企业级即时通讯<br>让协作更快一步',
-  description: '安全、高效、可定制——专为现代企业打造的智能聊天平台。',
+  variant: 'centered',
+  tone: 'classic',
+  title: '<mark>企业级即时通讯</mark><br>让协作更快一步',
+  description:
+    '安全、高效、可定制——专为现代企业打造的智能聊天平台，集成工作流与数据洞察。',
   actions: [
-    { text: '开始免费试用', link: '#', primary: true },
+    { text: '开始免费使用', link: '#', primary: true },
     { text: '联系销售', link: '#' },
   ],
   image: {
-    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=60',
-    alt: '界面截图',
+    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=60',
+    alt: '团队协作界面',
   },
 }
+
+/* 完全复用上面的数据，仅切换皮肤色调 */
+const heroBrutal: HeroData = { ...hero, tone: 'brutal' }
+
+/* 再复用同一份数据：换结构（左右分栏）+ 换皮肤（琥珀色），标题里的 <mark> 自动变成强调色文字 */
+const heroAmber: HeroData = { ...hero, variant: 'split', tone: 'amber' }
 
 /* ============ HeroBackground ============ */
 const heroBg: HeroBackgroundData = {
@@ -591,8 +601,10 @@ const footer: FooterData = {
   <Banner :data="banner" />
   <Navbar :data="navbar" />
 
-  <!-- Hero -->
+  <!-- Hero：同一份数据，classic / brutal / amber 三种皮肤 + split 结构 -->
   <Hero :data="hero" />
+  <Hero :data="heroBrutal" />
+  <Hero :data="heroAmber" />
 
   <!-- 特性 -->
   <Features :data="features" />
