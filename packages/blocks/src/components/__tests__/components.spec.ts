@@ -3,6 +3,9 @@ import { describe, expect, it } from 'vitest'
 
 import Navbar from '../Navbar/Navbar.vue'
 import Hero from '../Hero/Hero.vue'
+import type { HeroData, HeroTone } from '../Hero/types'
+import { heroRegistry, resolveHeroComponent } from '../Hero/registry'
+import { normalizeTone, normalizeVariant } from '../Hero/useHeroData'
 import Features from '../Features/Features.vue'
 import Stats from '../Stats/Stats.vue'
 import CTA from '../CTA/CTA.vue'
@@ -91,6 +94,138 @@ describe('Hero', () => {
     const overlay = wrapper.find('div.absolute.inset-0.bg-black')
     expect(overlay.exists()).toBe(true)
     expect(overlay.attributes('style')).toContain('0.6')
+  })
+
+  it('默认 tone 为 classic，并写到 data-cf-tone 上', () => {
+    const wrapper = mount(Hero, { props: { data: { title: 'T' } } })
+    expect(wrapper.find('section').attributes('data-cf-tone')).toBe('classic')
+  })
+
+  it('tone=brutal 时切换到 brutal 预设', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: 'T', tone: 'brutal' } },
+    })
+    expect(wrapper.find('section').attributes('data-cf-tone')).toBe('brutal')
+  })
+
+  it('非法 tone 静默回退到 classic', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: 'T', tone: 'neon' } as HeroData },
+    })
+    expect(wrapper.find('section').attributes('data-cf-tone')).toBe('classic')
+  })
+
+  it('旧值 variant=default 仍渲染 centered（无背景遮罩）', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: 'T', variant: 'default' } },
+    })
+    expect(wrapper.find('div.absolute.inset-0.bg-black').exists()).toBe(false)
+    expect(wrapper.find('h1').exists()).toBe(true)
+  })
+
+  it('非法 variant 静默回退到 centered', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: 'T', variant: 'carousel' } as HeroData },
+    })
+    expect(wrapper.find('div.absolute.inset-0.bg-black').exists()).toBe(false)
+  })
+
+  it('标题中的 <mark> 不被转义，用于局部高亮', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: '<mark>高亮</mark>后续' } },
+    })
+    expect(wrapper.find('h1 mark').exists()).toBe(true)
+    expect(wrapper.find('h1 mark').text()).toBe('高亮')
+  })
+
+  it('split 变体渲染左右两列栅格', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: 'T', variant: 'split' } },
+    })
+    expect(wrapper.html()).toContain('md:grid-cols-2')
+    expect(wrapper.find('div.absolute.inset-0.bg-black').exists()).toBe(false)
+  })
+
+  it('split 与 centered 渲染出不同的 DOM 骨架', () => {
+    const data: HeroData = { title: 'T', description: 'D', image: { src: '/a.png' } }
+    const centered = mount(Hero, { props: { data } }).html()
+    const split = mount(Hero, {
+      props: { data: { ...data, variant: 'split' } },
+    }).html()
+    expect(split).not.toBe(centered)
+  })
+
+  it('tone=amber 时切换到 amber 预设', () => {
+    const wrapper = mount(Hero, {
+      props: { data: { title: 'T', tone: 'amber' } },
+    })
+    expect(wrapper.find('section').attributes('data-cf-tone')).toBe('amber')
+  })
+
+  it('三种 tone 在同一变体下只改 data-cf-tone，DOM 结构一致', () => {
+    const data: HeroData = {
+      title: 'T',
+      description: 'D',
+      actions: [{ text: 'A' }, { text: 'B' }],
+      image: { src: '/a.png' },
+    }
+    const base = mount(Hero, { props: { data } }).html()
+    const tones: HeroTone[] = ['brutal', 'amber']
+    tones.forEach((tone) => {
+      const html = mount(Hero, { props: { data: { ...data, tone } } }).html()
+      expect(html.replace(`data-cf-tone="${tone}"`, 'data-cf-tone="classic"')).toBe(
+        base
+      )
+    })
+  })
+
+  it('同一份数据切换 tone 不改变 DOM 结构', () => {
+    const data: HeroData = {
+      title: 'T',
+      description: 'D',
+      actions: [{ text: 'A' }, { text: 'B' }],
+      image: { src: '/a.png' },
+    }
+    const classic = mount(Hero, { props: { data } }).html()
+    const brutal = mount(Hero, { props: { data: { ...data, tone: 'brutal' } } })
+      .html()
+    // 去掉 tone 标记后，两者结构应完全一致
+    expect(brutal.replace('data-cf-tone="brutal"', 'data-cf-tone="classic"')).toBe(
+      classic
+    )
+  })
+})
+
+describe('Hero 风格归一化', () => {
+  it('variant：default 与非法值都归一到 centered', () => {
+    expect(normalizeVariant()).toBe('centered')
+    expect(normalizeVariant('default')).toBe('centered')
+    expect(normalizeVariant('unknown')).toBe('centered')
+    expect(normalizeVariant('split')).toBe('split')
+    expect(normalizeVariant('background')).toBe('background')
+  })
+
+  it('tone：未知值归一到 classic', () => {
+    expect(normalizeTone()).toBe('classic')
+    expect(normalizeTone('brutal')).toBe('brutal')
+    expect(normalizeTone('amber')).toBe('amber')
+    expect(normalizeTone('neon')).toBe('classic')
+  })
+
+  it('split 已实现，registry 不再回退到 centered', () => {
+    expect(heroRegistry.split).not.toBe(heroRegistry.centered)
+  })
+
+  it('registry 的每个 key 都能解析出组件', () => {
+    Object.keys(heroRegistry).forEach((key) => {
+      expect(resolveHeroComponent(key as never)).toBeTruthy()
+    })
+  })
+
+  it('registry 缺失的 key 回退到 centered', () => {
+    expect(resolveHeroComponent('carousel' as never)).toBe(
+      heroRegistry.centered
+    )
   })
 })
 

@@ -1,0 +1,294 @@
+/* ============================================================
+   Hero 风格 Token
+   ------------------------------------------------------------
+   组件模板只消费变量，不写死颜色 / 字重 / 阴影。
+   新增一种风格 = 复制一段 [data-cf-tone='xxx'] 块，不改任何 .vue。
+   命名强制 --cf-hero-* 前缀，避免 30 个组件互相污染。
+   ============================================================ */
+
+/* ---------- classic：白底渐变 + 品牌色按钮（默认） ---------- */
+[data-cf-tone='classic'] {
+  --cf-hero-bg: #ffffff;
+  --cf-hero-bg-image: linear-gradient(to bottom, #ffffff, #f9fafb);
+  --cf-hero-text: #1f2937;
+  --cf-hero-border-w: 0;
+  --cf-hero-border-c: transparent;
+
+  --cf-hero-title-c: #111827;
+  --cf-hero-title-weight: 800;
+  --cf-hero-title-leading: 1;
+
+  --cf-hero-mark-bg: transparent;
+  --cf-hero-mark-c: inherit;
+  --cf-hero-mark-px: 0;
+  --cf-hero-mark-rotate: 0deg;
+
+  --cf-hero-desc-c: #4b5563;
+  --cf-hero-desc-weight: 400;
+
+  --cf-hero-btn-px: 1.5rem;
+  --cf-hero-btn-py: 0.75rem;
+  --cf-hero-btn-weight: 500;
+  --cf-hero-btn-size: 1rem;
+  --cf-hero-btn-radius: 9999px;
+
+  --cf-hero-btn-primary-bg: var(--cf-primary);
+  --cf-hero-btn-primary-bg-hover: var(--cf-primary-hover);
+  --cf-hero-btn-primary-text: #ffffff;
+  --cf-hero-btn-primary-text-hover: #ffffff;
+  --cf-hero-btn-primary-bc: transparent;
+  --cf-hero-btn-primary-bw: 0;
+  --cf-hero-btn-primary-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --cf-hero-btn-primary-shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  --cf-hero-btn-secondary-bg: #ffffff;
+  --cf-hero-btn-secondary-bg-hover: #ffffff;
+  --cf-hero-btn-secondary-text: #374151;
+  --cf-hero-btn-secondary-text-hover: #374151;
+  --cf-hero-btn-secondary-bc: #d1d5db;
+  --cf-hero-btn-secondary-bc-hover: #9ca3af;
+  --cf-hero-btn-secondary-bw: 1px;
+  --cf-hero-btn-secondary-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --cf-hero-btn-secondary-shadow-hover: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+
+  --cf-hero-media-bg: transparent;
+  --cf-hero-media-radius: 0.75rem;
+  --cf-hero-media-bw: 1px;
+  --cf-hero-media-bc: #e5e7eb;
+  --cf-hero-media-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --cf-hero-media-h: auto;
+  --cf-hero-media-h-md: auto;
+  --cf-hero-media-opacity: 1;
+}
+
+.dark [data-cf-tone='classic'] {
+  --cf-hero-bg: #111827;
+  --cf-hero-bg-image: linear-gradient(to bottom, #111827, #030712);
+  --cf-hero-text: #e5e7eb;
+
+  --cf-hero-title-c: #ffffff;
+  --cf-hero-desc-c: #9ca3af;
+
+  --cf-hero-btn-primary-bg: #6366f1;
+  --cf-hero-btn-primary-bg-hover: #4f46e5;
+
+  --cf-hero-btn-secondary-bg: #1f2937;
+  --cf-hero-btn-secondary-text: #d1d5db;
+  --cf-hero-btn-secondary-text-hover: #d1d5db;
+  --cf-hero-btn-secondary-bc: #4b5563;
+  --cf-hero-btn-secondary-bc-hover: #6b7280;
+
+  --cf-hero-media-bc: #374151;
+}
+
+/* ---------- brutal：新粗野主义（纯色 + 粗描边 + 硬阴影） ---------- */
+[data-cf-tone='brutal'] {
+  --cf-hero-bg: #e9e2ff;
+  --cf-hero-bg-image: none;
+  --cf-hero-text: #120b48;
+  --cf-hero-border-w: 4px;
+  --cf-hero-border-c: #ffb347;
+
+  --cf-hero-title-c: #120b48;
+  --cf-hero-title-weight: 900;
+  --cf-hero-title-leading: 1.1;
+
+  --cf-hero-mark-bg: #ffed99;
+  --cf-hero-mark-c: #120b48;
+  --cf-hero-mark-px: 0.75rem;
+  --cf-hero-mark-rotate: -1deg;
+
+  --cf-hero-desc-c: #2c1b6b;
+  --cf-hero-desc-weight: 500;
+
+  --cf-hero-btn-px: 2rem;
+  --cf-hero-btn-py: 1rem;
+  --cf-hero-btn-weight: 700;
+  --cf-hero-btn-size: 1rem;
+  --cf-hero-btn-radius: 9999px;
+
+  --cf-hero-btn-primary-bg: #120b48;
+  --cf-hero-btn-primary-bg-hover: #120b48;
+  --cf-hero-btn-primary-text: #ffffff;
+  --cf-hero-btn-primary-text-hover: #ffffff;
+  --cf-hero-btn-primary-bc: #ffb347;
+  --cf-hero-btn-primary-bw: 4px;
+  --cf-hero-btn-primary-shadow: 6px 6px 0 #ff5c8a;
+  --cf-hero-btn-primary-shadow-hover: 2px 2px 0 #ff5c8a;
+
+  --cf-hero-btn-secondary-bg: #ffffff;
+  --cf-hero-btn-secondary-bg-hover: #ffffff;
+  --cf-hero-btn-secondary-text: #120b48;
+  --cf-hero-btn-secondary-text-hover: #120b48;
+  --cf-hero-btn-secondary-bc: #ff5c8a;
+  --cf-hero-btn-secondary-bc-hover: #ff5c8a;
+  --cf-hero-btn-secondary-bw: 4px;
+  --cf-hero-btn-secondary-shadow: 6px 6px 0 #b47aff;
+  --cf-hero-btn-secondary-shadow-hover: 2px 2px 0 #b47aff;
+
+  --cf-hero-media-bg: #ffb347;
+  --cf-hero-media-radius: 1.5rem;
+  --cf-hero-media-bw: 4px;
+  --cf-hero-media-bc: #120b48;
+  --cf-hero-media-shadow: 20px 20px 0 #ff5c8a;
+  --cf-hero-media-h: 20rem;
+  --cf-hero-media-h-md: 24rem;
+  --cf-hero-media-opacity: 0.9;
+}
+
+.dark [data-cf-tone='brutal'] {
+  --cf-hero-bg: #1a103d;
+  --cf-hero-text: #ffffff;
+
+  --cf-hero-title-c: #ffffff;
+  --cf-hero-mark-bg: #ffb347;
+  --cf-hero-desc-c: #c4b5fd;
+
+  --cf-hero-btn-primary-bg: #ffb347;
+  --cf-hero-btn-primary-text: #120b48;
+  --cf-hero-btn-primary-text-hover: #120b48;
+  --cf-hero-btn-primary-bc: #ff5c8a;
+  --cf-hero-btn-primary-shadow: 6px 6px 0 #b47aff;
+  --cf-hero-btn-primary-shadow-hover: 2px 2px 0 #b47aff;
+
+  --cf-hero-btn-secondary-bg: #2c1b6b;
+  --cf-hero-btn-secondary-text: #ffffff;
+  --cf-hero-btn-secondary-text-hover: #ffffff;
+  --cf-hero-btn-secondary-bc: #ffb347;
+  --cf-hero-btn-secondary-shadow: 6px 6px 0 #ff5c8a;
+  --cf-hero-btn-secondary-shadow-hover: 2px 2px 0 #ff5c8a;
+
+  --cf-hero-media-bg: #2c1b6b;
+  --cf-hero-media-bc: #ffb347;
+  --cf-hero-media-shadow: 20px 20px 0 #b47aff;
+}
+
+/* ---------- amber：锌灰渐变 + 琥珀色强调 ---------- */
+[data-cf-tone='amber'] {
+  --cf-hero-bg: #f4f4f5;
+  --cf-hero-bg-image: linear-gradient(to bottom, #f4f4f5, #ffffff);
+  --cf-hero-text: #18181b;
+  --cf-hero-border-w: 0;
+  --cf-hero-border-c: transparent;
+
+  --cf-hero-title-c: #111827;
+  --cf-hero-title-weight: 900;
+  --cf-hero-title-leading: 1.25;
+
+  /* 强调色：只改文字颜色，不铺底色 */
+  --cf-hero-mark-bg: transparent;
+  --cf-hero-mark-c: #eab308;
+  --cf-hero-mark-px: 0;
+  --cf-hero-mark-rotate: 0deg;
+
+  --cf-hero-desc-c: #4b5563;
+  --cf-hero-desc-weight: 400;
+
+  --cf-hero-btn-px: 2rem;
+  --cf-hero-btn-py: 1rem;
+  --cf-hero-btn-weight: 700;
+  --cf-hero-btn-size: 1.125rem;
+  --cf-hero-btn-radius: 9999px;
+
+  --cf-hero-btn-primary-bg: #facc15;
+  --cf-hero-btn-primary-bg-hover: #fde047;
+  --cf-hero-btn-primary-text: #000000;
+  --cf-hero-btn-primary-text-hover: #000000;
+  --cf-hero-btn-primary-bc: transparent;
+  --cf-hero-btn-primary-bw: 0;
+  --cf-hero-btn-primary-shadow: 0 20px 25px -5px rgb(250 204 21 / 0.4),
+    0 8px 10px -6px rgb(250 204 21 / 0.4);
+  --cf-hero-btn-primary-shadow-hover: 0 20px 25px -5px rgb(250 204 21 / 0.4),
+    0 8px 10px -6px rgb(250 204 21 / 0.4);
+
+  --cf-hero-btn-secondary-bg: transparent;
+  --cf-hero-btn-secondary-bg-hover: #facc15;
+  --cf-hero-btn-secondary-text: #ca8a04;
+  --cf-hero-btn-secondary-text-hover: #000000;
+  --cf-hero-btn-secondary-bc: #eab308;
+  --cf-hero-btn-secondary-bc-hover: #eab308;
+  --cf-hero-btn-secondary-bw: 2px;
+  --cf-hero-btn-secondary-shadow: 0 0 #0000;
+  --cf-hero-btn-secondary-shadow-hover: 0 0 #0000;
+
+  --cf-hero-media-bg: transparent;
+  --cf-hero-media-radius: 1.5rem;
+  --cf-hero-media-bw: 4px;
+  --cf-hero-media-bc: rgb(250 204 21 / 0.3);
+  --cf-hero-media-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --cf-hero-media-h: auto;
+  --cf-hero-media-h-md: auto;
+  --cf-hero-media-opacity: 1;
+}
+
+.dark [data-cf-tone='amber'] {
+  --cf-hero-bg: #000000;
+  --cf-hero-bg-image: linear-gradient(to bottom, #000000, #18181b);
+  --cf-hero-text: #fafafa;
+
+  --cf-hero-title-c: #ffffff;
+  --cf-hero-mark-c: #fde047;
+  --cf-hero-desc-c: #d4d4d4;
+
+  --cf-hero-btn-primary-bg: #fde047;
+  --cf-hero-btn-primary-bg-hover: #fef08a;
+  --cf-hero-btn-primary-shadow: 0 20px 25px -5px rgb(253 224 71 / 0.4),
+    0 8px 10px -6px rgb(253 224 71 / 0.4);
+  --cf-hero-btn-primary-shadow-hover: 0 20px 25px -5px rgb(253 224 71 / 0.4),
+    0 8px 10px -6px rgb(253 224 71 / 0.4);
+
+  --cf-hero-btn-secondary-bg-hover: #fde047;
+  --cf-hero-btn-secondary-text: #fde047;
+  --cf-hero-btn-secondary-bc: #fde047;
+
+  --cf-hero-media-bc: rgb(253 224 71 / 0.3);
+}
+
+/* ============================================================
+   以下规则只处理「量」——字重、行高、旋转、高度。
+   颜色 / 阴影 / 圆角 / 边框 一律走 Tailwind 任意值工具类，
+   因为工具类必须写成静态字面量才能通过按需扫描。
+   （这些规则不带 @layer，因此优先级高于 Tailwind utilities，
+     模板里不要再写 font-* / leading-*，否则会被这里覆盖。）
+   ============================================================ */
+
+.cf-hero-title {
+  color: var(--cf-hero-title-c);
+  font-weight: var(--cf-hero-title-weight);
+  line-height: var(--cf-hero-title-leading);
+}
+
+/* 标题局部高亮：语义化 <mark>，由 tone 决定外观 */
+.cf-hero-title mark {
+  background-color: var(--cf-hero-mark-bg);
+  color: var(--cf-hero-mark-c);
+  padding-inline: var(--cf-hero-mark-px);
+  display: inline-block;
+  transform: rotate(var(--cf-hero-mark-rotate));
+}
+
+.cf-hero-desc {
+  color: var(--cf-hero-desc-c);
+  font-weight: var(--cf-hero-desc-weight);
+}
+
+.cf-hero-btn {
+  font-weight: var(--cf-hero-btn-weight);
+  font-size: var(--cf-hero-btn-size);
+}
+
+.cf-hero-media {
+  height: var(--cf-hero-media-h);
+}
+
+@media (min-width: 768px) {
+  .cf-hero-media {
+    height: var(--cf-hero-media-h-md);
+  }
+}
+
+.cf-hero-media-img {
+  opacity: var(--cf-hero-media-opacity);
+}
